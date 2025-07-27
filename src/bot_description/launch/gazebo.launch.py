@@ -21,7 +21,7 @@ def generate_launch_description():
         description="Absolute path to robot urdf file"
     )
 
-    world_name_arg = DeclareLaunchArgument(name="world_name", default_value="custom_eight_table_world") #empty_table #my_table_world #custom_table_world #custom_eight_table_world
+    world_name_arg = DeclareLaunchArgument(name="world_name", default_value="custom_eight_table_world") #empty_table 
 
     world_path = PathJoinSubstitution([
         bot_description,
@@ -32,8 +32,6 @@ def generate_launch_description():
 
     model_path = str(Path(bot_description).parent.resolve())
     model_path += pathsep + os.path.join(get_package_share_directory("bot_description"), 'models')
-    # model_path = str(Path(bot_description).parent.resolve())
-    # model_path += pathsep + os.path.join(bot_description, 'models')
 
     gazebo_resource_path = SetEnvironmentVariable(
         "GZ_SIM_RESOURCE_PATH",
@@ -57,15 +55,6 @@ def generate_launch_description():
         parameters=[{"robot_description": robot_description,
                      "use_sim_time": True}]
     )
-
-    # gazebo = IncludeLaunchDescription(
-    #     PythonLaunchDescriptionSource([os.path.join(
-    #         get_package_share_directory("ros_gz_sim"), "launch"), "/gz_sim.launch.py"]),
-    #         launch_arguments={
-    #             "gz_args": PythonExpression(["'", world_path, " -v 4 -r'"])    #         "gz_args": PythonExpression(["'", world_path, " -v 4 -r --pause'"])
-
-    #         }.items()
-    # )
 
 
     gazebo = IncludeLaunchDescription(
@@ -97,7 +86,7 @@ def generate_launch_description():
         executable="parameter_bridge",
         arguments=[
             "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
-            "/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan",
+            "/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan", 
         ],
     )
 

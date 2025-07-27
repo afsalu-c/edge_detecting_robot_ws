@@ -2,6 +2,7 @@
 <robot name = "bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
     
     <!-- bot Wheels -->
+<!-- bot Wheels -->
     <gazebo reference="right_wheel_link">
         <mu1>1000000000000000.0</mu1>
         <mu2>1000000000000000.0</mu2>
@@ -22,8 +23,8 @@
         <fdir1>1 0 0</fdir1>
     </gazebo>
 
-    <!-- Castor wheel-->
-    <gazebo reference="front_castor_joint">
+    <!-- Caster Wheels -->
+    <gazebo reference="front_castor_link">
         <mu1>0.1</mu1>
         <mu2>0.1</mu2>
         <kp>1000000.0</kp>
@@ -32,6 +33,8 @@
         <maxVel>1.0</maxVel>
     </gazebo>
 
+<!-- bot Sensors -->
+<!-- 2D Laser Sensor -->
 <!-- bot Sensors -->
 <!-- 2D Laser Sensor -->
 <gazebo reference="laser_link">
@@ -65,14 +68,15 @@
     </sensor>
 </gazebo>
 
+
 <!-- ROS 2 Control -->
 <gazebo>
-    <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
-        <parameters>$(find bot_controller)/config/bot_controllers.yaml</parameters>
+    <plugin filename="libgz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin"> <!-- changed hardware plugin for gazebo harmonic -->
+            <parameters>$(find bot_controller)/config/bot_controllers.yaml</parameters>
     </plugin>
 
-    <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors">
-        <render_engine>ogre2</render_engine>
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors"> <!-- changed hardware plugin for gazebo harmonic -->
+      <render_engine>ogre2</render_engine>
     </plugin>
 </gazebo>
 

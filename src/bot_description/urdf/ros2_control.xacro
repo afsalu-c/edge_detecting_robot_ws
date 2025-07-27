@@ -3,13 +3,13 @@
 
   <xacro:arg name="is_sim" default="true"/>
 
-  <ros2_control name="RobotSystem" type="system">
+    <ros2_control name="RobotSystem" type="system">
 
     <xacro:property name="PI" value="3.14159265359" />
 
-    <hardware>
-      <plugin>ign_ros2_control/IgnitionSystem</plugin>
-    </hardware>
+  <hardware>
+    <plugin>gz_ros2_control/GazeboSimSystem</plugin>  <!-- changed hardware plugin for gazebo harmonic -->
+  </hardware>
 
     <joint name="right_wheel_joint">
       <command_interface name="velocity">
@@ -29,6 +29,7 @@
       <state_interface name="velocity" />
     </joint>
 
-  </ros2_control>
+
+</ros2_control>
 
 </robot>
