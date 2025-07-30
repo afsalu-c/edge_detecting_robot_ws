@@ -71,8 +71,8 @@
 
 <!-- ROS 2 Control -->
 <gazebo>
-    <!-- <plugin filename="libgz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin"> changed -->
-    <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+    <plugin filename="libgz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin"> changed
+    <!-- <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin"> -->
             <parameters>$(find bot_controller)/config/bot_controllers.yaml</parameters>
     </plugin>
 

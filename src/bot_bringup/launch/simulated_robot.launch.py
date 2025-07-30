@@ -38,14 +38,14 @@ def generate_launch_description():
         arguments=["-d", os.path.join(          #"-d" is a command-line flag for rviz2, -d stands for "display config file
             get_package_share_directory("bot_description"), #ex: rviz2 -d ~/ros2_ws/src/bot_description/rviz/display.rviz
             "rviz",
-            "display.rviz"
+            "edge_avoidance_display.rviz" #display.rviz
         )],
         output="screen",
         parameters=[{"use_sim_time": True}]
     )
 
     edge_avoidance_node = Node(
-        package="bot_script",
+        package="bot_scripts",
         executable="edge_detection",
         name="edge_avoidance_node",
         output="screen", # ← This will let you see log output in terminal, if output="log" = save logs to files only

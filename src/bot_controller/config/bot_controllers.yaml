@@ -13,6 +13,9 @@ wheel_controller:
     type: diff_drive_controller/DiffDriveController
 
     use_stamped_vel: true #false
+    # use_stamped_vel: false #false
+
+    # stamped: false
     # stamped: true
     left_wheel_names  : ['left_wheel_joint']
     right_wheel_names : ['right_wheel_joint']
